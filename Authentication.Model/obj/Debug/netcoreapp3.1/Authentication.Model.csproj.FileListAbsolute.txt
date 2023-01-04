@@ -1,0 +1,9 @@
+F:\GitWashMe\Solutions\Authentication\Authentication.Model\bin\Debug\netcoreapp3.1\Authentication.Model.deps.json
+F:\GitWashMe\Solutions\Authentication\Authentication.Model\bin\Debug\netcoreapp3.1\Authentication.Model.dll
+F:\GitWashMe\Solutions\Authentication\Authentication.Model\bin\Debug\netcoreapp3.1\Authentication.Model.pdb
+F:\GitWashMe\Solutions\Authentication\Authentication.Model\obj\Debug\netcoreapp3.1\Authentication.Model.csprojAssemblyReference.cache
+F:\GitWashMe\Solutions\Authentication\Authentication.Model\obj\Debug\netcoreapp3.1\Authentication.Model.AssemblyInfoInputs.cache
+F:\GitWashMe\Solutions\Authentication\Authentication.Model\obj\Debug\netcoreapp3.1\Authentication.Model.AssemblyInfo.cs
+F:\GitWashMe\Solutions\Authentication\Authentication.Model\obj\Debug\netcoreapp3.1\Authentication.Model.csproj.CoreCompileInputs.cache
+F:\GitWashMe\Solutions\Authentication\Authentication.Model\obj\Debug\netcoreapp3.1\Authentication.Model.dll
+F:\GitWashMe\Solutions\Authentication\Authentication.Model\obj\Debug\netcoreapp3.1\Authentication.Model.pdb
