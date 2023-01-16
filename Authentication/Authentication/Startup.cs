@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -56,10 +57,10 @@ namespace Authentication
 
             });
 
-            services.AddDataProtection().
-                PersistKeysToFileSystem(new DirectoryInfo(Configuration["Cookie:KeyRingFolder"])).
-                ProtectKeysWithCertificate(new X509Certificate2(Configuration["Cookie:KeyProtectedCertificate"], Configuration["Cookie:KeyProtectedCertificatePwd"])).
-                SetApplicationName(Configuration["Cookie:CommonApplicationName"]);
+            //services.AddDataProtection().
+            //    PersistKeysToFileSystem(new DirectoryInfo(Configuration["Cookie:KeyRingFolder"])).
+            //    ProtectKeysWithCertificate(new X509Certificate2(Configuration["Cookie:KeyProtectedCertificate"], Configuration["Cookie:KeyProtectedCertificatePwd"])).
+            //    SetApplicationName(Configuration["Cookie:CommonApplicationName"]);
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
               .AddCookie(options =>
@@ -84,6 +85,10 @@ namespace Authentication
                   ? CookieSecurePolicy.None : CookieSecurePolicy.Always;
             });
 
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Washme.IdentityProvider", Version = "v1" });
+            });
 
             services.AddHttpContextAccessor();
             services.AddScoped(typeof(IUserManagementService), typeof(UserManagementService));
@@ -95,6 +100,8 @@ namespace Authentication
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "AESA.IdentityProvider.EFE v1"));
             }
 
             app.UseExceptionHandler(a => a.Run(async context =>

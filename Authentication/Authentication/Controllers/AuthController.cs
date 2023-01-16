@@ -44,10 +44,10 @@ namespace Authentication.Controllers
         [ActionName("Login")]
         [HttpPost]
         [AllowAnonymous]
-        public async Task<RedirectResult> Login(AuthUserModel userModel)
+        public async Task<LoginResponse> Login(AuthUserModel userModel)
         {
-            string redirectUrl = await _userManagement.ValidateUserLogin(userModel);
-            return Redirect(redirectUrl);
+            return await _userManagement.GetAuthLoginToken(userModel);
+           
         }
     }
 }

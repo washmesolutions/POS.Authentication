@@ -1,12 +1,16 @@
 ﻿using Authentication.Model;
 using Authentication.Model.Exception;
 using Authentication.Model.User;
+using IdentityModel.Client;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,12 +22,13 @@ namespace Authentication.Service
         private readonly ILogger _logger;
         private readonly ILoggerFactory _loggerFactory;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IConfiguration configuration;
         //private readonly ConfigWrapper _config = new ConfigWrapper();
-        public UserManagementService(ILoggerFactory logger, IHttpContextAccessor httpContextAccessor)
+        public UserManagementService(ILoggerFactory logger, IHttpContextAccessor httpContextAccessor, IConfiguration _configuration)
         {
             _loggerFactory = logger;
             _logger = logger.CreateLogger<UserManagementService>();
-
+            configuration = _configuration;
             _httpContextAccessor = httpContextAccessor;
         }
 
@@ -101,6 +106,28 @@ namespace Authentication.Service
                 _logger.LogError("ValidateUserLogin -> {0}",ex);
             }
             return redirectUrl;
+        }
+
+
+        public async Task<LoginResponse> GetAuthLoginToken(AuthUserModel authUser)
+        {
+            LoginResponse tokenAuthenticationResponse = new LoginResponse();
+            var client = new HttpClient();
+
+            var disco = await client.GetDiscoveryDocumentAsync(configuration["APISettings:IdentityServerUri"]);
+
+            var tokenResponse = await client.RequestPasswordTokenAsync(new PasswordTokenRequest
+            {
+                Address = disco.TokenEndpoint,
+                ClientId = configuration["APISettings:ClientId"],
+                ClientSecret = configuration["APISettings:ClientSecret"],
+                Scope = configuration["APISettings:Scope"],
+                UserName = authUser.UserName,
+                Password = authUser.Password
+            });
+
+            tokenAuthenticationResponse.AccessToken = tokenResponse.AccessToken;
+            return tokenAuthenticationResponse;
         }
 
     }

@@ -11,7 +11,8 @@ namespace Authentication.Service
 {
     public interface IUserManagementService
     {
-        public Task<UserModel> GetUserModel(HttpRequest request, ClaimsPrincipal userData);
-        public Task<string> ValidateUserLogin(AuthUserModel authUser);
+        Task<UserModel> GetUserModel(HttpRequest request, ClaimsPrincipal userData);
+        Task<string> ValidateUserLogin(AuthUserModel authUser);
+        Task<LoginResponse> GetAuthLoginToken(AuthUserModel authUser);
     }
 }
