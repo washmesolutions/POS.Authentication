@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "F:\\GitWashMe\\Solutions\\Authentication\\Authentication.Model\\Authentication.Model.csproj": {}
+    "D:\\Sandbox\\VisualStudio\\Washme\\POS.Authentication\\Authentication.Model\\Authentication.Model.csproj": {}
   },
   "projects": {
-    "F:\\GitWashMe\\Solutions\\Authentication\\Authentication.Model\\Authentication.Model.csproj": {
+    "D:\\Sandbox\\VisualStudio\\Washme\\POS.Authentication\\Authentication.Model\\Authentication.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\GitWashMe\\Solutions\\Authentication\\Authentication.Model\\Authentication.Model.csproj",
+        "projectUniqueName": "D:\\Sandbox\\VisualStudio\\Washme\\POS.Authentication\\Authentication.Model\\Authentication.Model.csproj",
         "projectName": "Authentication.Model",
-        "projectPath": "F:\\GitWashMe\\Solutions\\Authentication\\Authentication.Model\\Authentication.Model.csproj",
-        "packagesPath": "C:\\Users\\d.mendis\\.nuget\\packages\\",
-        "outputPath": "F:\\GitWashMe\\Solutions\\Authentication\\Authentication.Model\\obj\\",
+        "projectPath": "D:\\Sandbox\\VisualStudio\\Washme\\POS.Authentication\\Authentication.Model\\Authentication.Model.csproj",
+        "packagesPath": "C:\\Users\\wnt\\.nuget\\packages\\",
+        "outputPath": "D:\\Sandbox\\VisualStudio\\Washme\\POS.Authentication\\Authentication.Model\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\d.mendis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\wnt\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,8 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "http://installers.askia.com/AskiaNuGet/nuget/": {},
-          "http://staging.dev.p1central.com/P1NugetServer/nuget": {},
+          "D:\\Repo\\Core1\\aesa-smartphone-api\\Resources\\NeGet": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -47,7 +46,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -56,7 +56,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

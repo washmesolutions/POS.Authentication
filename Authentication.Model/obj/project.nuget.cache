@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YQqmlKyoR3y8k/aqL3BBEs60i1bN2HojZn7xz9miIPYotHoRHMatGgKUHd4dQNPTGhHNXdq+vfx1INoDR02kBA==",
+  "dgSpecHash": "rD73zQ5CCeOT7qoAVGE/RISJxIxDtp9Orwo/zvYP0SHrgYsVKqNSBXwNTCk0llzYZE/KHYtZ77XsrCy3VXDJyg==",
   "success": true,
-  "projectFilePath": "F:\\GitWashMe\\Solutions\\Authentication\\Authentication.Model\\Authentication.Model.csproj",
+  "projectFilePath": "D:\\Sandbox\\VisualStudio\\Washme\\POS.Authentication\\Authentication.Model\\Authentication.Model.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

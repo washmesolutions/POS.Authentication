@@ -7,3 +7,13 @@ F:\GitWashMe\Solutions\Authentication\Authentication.Model\obj\Debug\netcoreapp3
 F:\GitWashMe\Solutions\Authentication\Authentication.Model\obj\Debug\netcoreapp3.1\Authentication.Model.csproj.CoreCompileInputs.cache
 F:\GitWashMe\Solutions\Authentication\Authentication.Model\obj\Debug\netcoreapp3.1\Authentication.Model.dll
 F:\GitWashMe\Solutions\Authentication\Authentication.Model\obj\Debug\netcoreapp3.1\Authentication.Model.pdb
+D:\Sandbox\VisualStudio\Washme\POS.Authentication\Authentication.Model\bin\Debug\netcoreapp3.1\Authentication.Model.deps.json
+D:\Sandbox\VisualStudio\Washme\POS.Authentication\Authentication.Model\bin\Debug\netcoreapp3.1\Authentication.Model.dll
+D:\Sandbox\VisualStudio\Washme\POS.Authentication\Authentication.Model\bin\Debug\netcoreapp3.1\Authentication.Model.pdb
+D:\Sandbox\VisualStudio\Washme\POS.Authentication\Authentication.Model\obj\Debug\netcoreapp3.1\Authentication.Model.csproj.AssemblyReference.cache
+D:\Sandbox\VisualStudio\Washme\POS.Authentication\Authentication.Model\obj\Debug\netcoreapp3.1\Authentication.Model.GeneratedMSBuildEditorConfig.editorconfig
+D:\Sandbox\VisualStudio\Washme\POS.Authentication\Authentication.Model\obj\Debug\netcoreapp3.1\Authentication.Model.AssemblyInfoInputs.cache
+D:\Sandbox\VisualStudio\Washme\POS.Authentication\Authentication.Model\obj\Debug\netcoreapp3.1\Authentication.Model.AssemblyInfo.cs
+D:\Sandbox\VisualStudio\Washme\POS.Authentication\Authentication.Model\obj\Debug\netcoreapp3.1\Authentication.Model.csproj.CoreCompileInputs.cache
+D:\Sandbox\VisualStudio\Washme\POS.Authentication\Authentication.Model\obj\Debug\netcoreapp3.1\Authentication.Model.dll
+D:\Sandbox\VisualStudio\Washme\POS.Authentication\Authentication.Model\obj\Debug\netcoreapp3.1\Authentication.Model.pdb

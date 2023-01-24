@@ -10,3 +10,16 @@ F:\GitWashMe\Solutions\Authentication\Authentication.Service\obj\Debug\netcoreap
 F:\GitWashMe\Solutions\Authentication\Authentication.Service\obj\Debug\netcoreapp3.1\Authentication.Service.csproj.CopyComplete
 F:\GitWashMe\Solutions\Authentication\Authentication.Service\obj\Debug\netcoreapp3.1\Authentication.Service.dll
 F:\GitWashMe\Solutions\Authentication\Authentication.Service\obj\Debug\netcoreapp3.1\Authentication.Service.pdb
+D:\Sandbox\VisualStudio\Washme\POS.Authentication\Authentication.Service\bin\Debug\netcoreapp3.1\Authentication.Service.deps.json
+D:\Sandbox\VisualStudio\Washme\POS.Authentication\Authentication.Service\bin\Debug\netcoreapp3.1\Authentication.Service.dll
+D:\Sandbox\VisualStudio\Washme\POS.Authentication\Authentication.Service\bin\Debug\netcoreapp3.1\Authentication.Service.pdb
+D:\Sandbox\VisualStudio\Washme\POS.Authentication\Authentication.Service\bin\Debug\netcoreapp3.1\Authentication.Model.dll
+D:\Sandbox\VisualStudio\Washme\POS.Authentication\Authentication.Service\bin\Debug\netcoreapp3.1\Authentication.Model.pdb
+D:\Sandbox\VisualStudio\Washme\POS.Authentication\Authentication.Service\obj\Debug\netcoreapp3.1\Authentication.Service.csproj.AssemblyReference.cache
+D:\Sandbox\VisualStudio\Washme\POS.Authentication\Authentication.Service\obj\Debug\netcoreapp3.1\Authentication.Service.GeneratedMSBuildEditorConfig.editorconfig
+D:\Sandbox\VisualStudio\Washme\POS.Authentication\Authentication.Service\obj\Debug\netcoreapp3.1\Authentication.Service.AssemblyInfoInputs.cache
+D:\Sandbox\VisualStudio\Washme\POS.Authentication\Authentication.Service\obj\Debug\netcoreapp3.1\Authentication.Service.AssemblyInfo.cs
+D:\Sandbox\VisualStudio\Washme\POS.Authentication\Authentication.Service\obj\Debug\netcoreapp3.1\Authentication.Service.csproj.CoreCompileInputs.cache
+D:\Sandbox\VisualStudio\Washme\POS.Authentication\Authentication.Service\obj\Debug\netcoreapp3.1\Authentication.Service.csproj.CopyComplete
+D:\Sandbox\VisualStudio\Washme\POS.Authentication\Authentication.Service\obj\Debug\netcoreapp3.1\Authentication.Service.dll
+D:\Sandbox\VisualStudio\Washme\POS.Authentication\Authentication.Service\obj\Debug\netcoreapp3.1\Authentication.Service.pdb
