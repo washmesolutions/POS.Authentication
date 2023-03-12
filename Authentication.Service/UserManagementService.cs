@@ -121,12 +121,13 @@ namespace Authentication.Service
                 Address = disco.TokenEndpoint,
                 ClientId = configuration["APISettings:ClientId"],
                 ClientSecret = configuration["APISettings:ClientSecret"],
-                Scope = configuration["APISettings:Scope"],
+                //Scope = configuration["APISettings:Scope"],
                 UserName = authUser.UserName,
                 Password = authUser.Password
             });
 
             tokenAuthenticationResponse.AccessToken = tokenResponse.AccessToken;
+            tokenAuthenticationResponse.RefreshToken = tokenResponse.RefreshToken;
             return tokenAuthenticationResponse;
         }
 

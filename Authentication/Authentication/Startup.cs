@@ -1,6 +1,7 @@
 using Authentication.Model.Exception;
 using Authentication.Service;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.AspNetCore.DataProtection;
@@ -13,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using System;
@@ -20,7 +22,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Security.Claims;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Authentication
@@ -39,57 +43,34 @@ namespace Authentication
         {
             services.AddControllers();
 
-            services.AddCors(c =>
-            {
-                c.AddPolicy("AllowAll", options => options.SetIsOriginAllowed(isOriginAllowed: _ => true)
-                                                            .AllowAnyMethod()
-                                                            .AllowAnyHeader()
-                                                            .AllowCredentials());
-
-                if (!string.IsNullOrEmpty(Configuration["PolicyUrl:idpPolicy"]))
+            services.AddAuthentication("Bearer")
+                .AddJwtBearer("Bearer", options =>
                 {
-                    c.AddPolicy("idpPolicy", builder =>
+                    options.Authority = "https://localhost:5001";
+                    options.TokenValidationParameters = new TokenValidationParameters
                     {
-                        builder.WithOrigins((Configuration["PolicyUrl:idpPolicy"]).Split(","))
-                        .AllowAnyHeader().AllowAnyMethod().AllowCredentials();
-                    });
-                }
+                        ValidateAudience = false
+                    };
 
-            });
-
-            //services.AddDataProtection().
-            //    PersistKeysToFileSystem(new DirectoryInfo(Configuration["Cookie:KeyRingFolder"])).
-            //    ProtectKeysWithCertificate(new X509Certificate2(Configuration["Cookie:KeyProtectedCertificate"], Configuration["Cookie:KeyProtectedCertificatePwd"])).
-            //    SetApplicationName(Configuration["Cookie:CommonApplicationName"]);
-
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-              .AddCookie(options =>
-              {
-                  options.Cookie.HttpOnly = true;
-                  options.Cookie.SecurePolicy = true
-                    ? CookieSecurePolicy.None : CookieSecurePolicy.Always;
-                  options.Cookie.SameSite = SameSiteMode.Lax;
-                  options.Cookie.Name = Configuration["Cookie:CommonCookieName"];
-                  options.Cookie.Path = "/";
-
-                  // This is to work cookie for sub domains. this is required when things are getting properly distributed.
-                  if (!string.IsNullOrEmpty(Configuration["Cookie:Domain"]))
-                      options.Cookie.Domain = Configuration["Cookie:Domain"];
-              });
-
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                options.MinimumSameSitePolicy = SameSiteMode.Strict;
-                options.HttpOnly = HttpOnlyPolicy.None;
-                options.Secure = true
-                  ? CookieSecurePolicy.None : CookieSecurePolicy.Always;
-            });
+                    options.Events = new JwtBearerEvents
+                    {
+                        OnTokenValidated = async context =>
+                        {
+                            var userId = context.Principal.FindFirstValue("id");
+                            if (!string.IsNullOrEmpty(userId))
+                            {
+                                // Add the user ID as a claim
+                                var claimsIdentity = context.Principal.Identity as ClaimsIdentity;
+                                claimsIdentity.AddClaim(new Claim(ClaimTypes.NameIdentifier, userId));
+                            }
+                        }
+                    };
+                });
 
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Washme.IdentityProvider", Version = "v1" });
             });
-
             services.AddHttpContextAccessor();
             services.AddScoped(typeof(IUserManagementService), typeof(UserManagementService));
         }
@@ -101,32 +82,14 @@ namespace Authentication
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "AESA.IdentityProvider.EFE v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApplication1 v1"));
             }
-
-            app.UseExceptionHandler(a => a.Run(async context =>
-            {
-                var exceptionHandlerPathFeature = context.Features.Get<IExceptionHandlerPathFeature>();
-                var exception = exceptionHandlerPathFeature.Error;
-
-                if (exception is AuthenticationFailure)
-                {
-                    context.Response.StatusCode = (int)HttpStatusCode.Forbidden;
-                    var result = JsonConvert.SerializeObject(exception);
-                    context.Response.ContentType = "application/json";
-                    await context.Response.WriteAsync(result);
-                }
-
-            }));
-
-            app.UseCors("AllowAll");
+            app.UseAuthentication();
 
             app.UseHttpsRedirection();
 
-            app.UseCookiePolicy();
-            app.UseAuthentication();
             app.UseRouting();
-            app.UseCors();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
